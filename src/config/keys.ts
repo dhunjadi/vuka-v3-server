@@ -1,3 +1,3 @@
 /* eslint-disable prettier/prettier */
 export const mongoURI =
-  'mongodb+srv://testUser:Password12345@cluster0.kyjyns7.mongodb.net/?retryWrites=true&w=majority';
+  'mongodb+srv://dummyUser:dummyPassword@vukacluster.joc2m9a.mongodb.net/?retryWrites=true&w=majority';
