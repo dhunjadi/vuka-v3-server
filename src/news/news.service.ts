@@ -12,4 +12,8 @@ export class NewsService {
   async findAll(): Promise<News[]> {
     return this.newsModel.find().exec();
   }
+
+  async getNewsByType(type: string): Promise<News[]> {
+    return this.newsModel.find({ type }).exec();
+  }
 }
