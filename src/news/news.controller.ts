@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { NewsService } from './news.service';
 import { News } from './schemas/news.schema';
 
@@ -19,5 +19,10 @@ export class NewsController {
   @Post('/new')
   async createNew() {
     return this.newsService.createNew();
+  }
+
+  @Delete('delete/:id')
+  async delete(@Param('id') id: string) {
+    return this.newsService.delete(id);
   }
 }

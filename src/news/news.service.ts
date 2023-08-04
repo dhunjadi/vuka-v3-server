@@ -11,14 +11,18 @@ export class NewsService {
   ) {}
 
   async findAll(): Promise<News[]> {
-    return this.newsModel.find().exec();
+    return this.newsModel.find();
   }
 
   async getNewsByType(type: string): Promise<News[]> {
-    return this.newsModel.find({ type }).exec();
+    return this.newsModel.find({ type });
   }
 
   async createNew(): Promise<News> {
     return await this.newsModel.create(new CreateNewsDto());
+  }
+
+  async delete(id: string) {
+    return await this.newsModel.findByIdAndRemove({ _id: id });
   }
 }
