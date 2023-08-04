@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Post } from '@nestjs/common';
 import { NewsService } from './news.service';
 import { News } from './schemas/news.schema';
 
@@ -14,5 +14,10 @@ export class NewsController {
   @Get(':type')
   getByType(@Param('type') type: string) {
     return this.newsService.getNewsByType(type);
+  }
+
+  @Post('/new')
+  async createNew() {
+    return this.newsService.createNew();
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { News } from './schemas/news.schema';
 import { Model } from 'mongoose';
+import { CreateNewsDto } from './dto/create-news-dto';
 
 @Injectable()
 export class NewsService {
@@ -15,5 +16,9 @@ export class NewsService {
 
   async getNewsByType(type: string): Promise<News[]> {
     return this.newsModel.find({ type }).exec();
+  }
+
+  async createNew(): Promise<News> {
+    return await this.newsModel.create(new CreateNewsDto());
   }
 }
