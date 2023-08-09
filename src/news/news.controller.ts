@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   Post,
+  Put,
   UseGuards,
 } from '@nestjs/common';
 import { NewsService } from './news.service';
@@ -35,5 +36,10 @@ export class NewsController {
   @Delete('delete/:id')
   async delete(@Param('id') id: string) {
     return this.newsService.delete(id);
+  }
+
+  @Put('edit/:id')
+  async updateItem(@Param('id') id: string, @Body() updateData: any) {
+    return this.newsService.updateNews(id, updateData);
   }
 }

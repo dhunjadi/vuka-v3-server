@@ -25,4 +25,10 @@ export class NewsService {
   async delete(id: string) {
     return await this.newsModel.findByIdAndRemove({ _id: id });
   }
+
+  async updateNews(id: string, updateData: any) {
+    return this.newsModel.findOneAndUpdate({ _id: id }, updateData, {
+      new: true,
+    });
+  }
 }
