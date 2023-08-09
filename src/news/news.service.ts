@@ -18,8 +18,8 @@ export class NewsService {
     return this.newsModel.find({ type });
   }
 
-  async createNew(): Promise<News> {
-    return await this.newsModel.create(new CreateNewsDto());
+  async createNew(data: CreateNewsDto): Promise<News> {
+    return await this.newsModel.create(data);
   }
 
   async delete(id: string) {

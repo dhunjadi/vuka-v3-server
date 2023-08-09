@@ -2,14 +2,14 @@ import { IsBoolean, IsString } from 'class-validator';
 
 export class CreateNewsDto {
   @IsString()
-  readonly title: string = 'New News Title';
+  readonly title: string;
 
   @IsString()
-  readonly text: string = 'New News Text';
+  readonly text: string;
 
   @IsString()
-  readonly type: string = 'general';
+  readonly type: string;
 
   @IsBoolean()
-  readonly isPublished: boolean = false;
+  readonly isPublished: boolean;
 }

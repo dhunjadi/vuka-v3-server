@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Delete,
   Get,
@@ -9,6 +10,7 @@ import {
 import { NewsService } from './news.service';
 import { News } from './schemas/news.schema';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { CreateNewsDto } from './dto/create-news-dto';
 
 @Controller('news')
 @UseGuards(JwtAuthGuard)
@@ -26,8 +28,8 @@ export class NewsController {
   }
 
   @Post('/new')
-  async createNew() {
-    return this.newsService.createNew();
+  async createNew(@Body() data: CreateNewsDto) {
+    return this.newsService.createNew(data);
   }
 
   @Delete('delete/:id')
