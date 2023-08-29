@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Request,
   UseGuards,
 } from '@nestjs/common';
 import { NewsService } from './news.service';
@@ -24,8 +25,8 @@ export class NewsController {
   }
 
   @Get(':type')
-  getByType(@Param('type') type: string) {
-    return this.newsService.getNewsByType(type);
+  async getByType(@Request() req, @Param('type') type: string) {
+    return this.newsService.getNewsByType(type, req.user.role);
   }
 
   @Post('/new')

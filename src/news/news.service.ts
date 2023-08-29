@@ -14,7 +14,10 @@ export class NewsService {
     return this.newsModel.find();
   }
 
-  async getNewsByType(type: string): Promise<News[]> {
+  async getNewsByType(type: string, userRole: string): Promise<News[]> {
+    if (userRole === 'student') {
+      return this.newsModel.find({ type, isPublished: true });
+    }
     return this.newsModel.find({ type });
   }
 
