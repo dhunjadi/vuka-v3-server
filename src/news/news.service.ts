@@ -18,7 +18,7 @@ export class NewsService {
     if (userRole === 'student') {
       return this.newsModel.find({ type, isPublished: true });
     }
-    return this.newsModel.find({ type });
+    return this.newsModel.find().exec();
   }
 
   async createNew(data: CreateNewsDto): Promise<News> {
